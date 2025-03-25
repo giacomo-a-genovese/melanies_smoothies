@@ -22,14 +22,6 @@ ingredients_list = st.multiselect(
     
 )
 
-#Test your multiselect. We tell them to choose up to 5 ingredients but we don't enforce that number limit. 
-
-#📓 The Data Returned is both a list and a LIST
-#We are placing the multiselect entries into a variable called "ingredients." We can then write "ingredients" back out to the screen.
-
-#Our ingredients variable is an object or data type called a LIST. So it's a list in the traditional sense of the word, but it is also a datatype or object called a LIST. A LIST is different than a DATAFRAME which is also different from a STRING!
-
-#We can use the st.write() and st.text() methods to take a closer look at what is contained in our ingredients LIST. 
 if ingredients_list:
     ingredients_string = ''
 
@@ -47,3 +39,12 @@ if ingredients_list:
     if time_to_insert:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered, ' + name_on_order + '!', icon="✅" )
+
+
+
+
+
+# New section to display smoothiefroot nutruition information
+import requests
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
